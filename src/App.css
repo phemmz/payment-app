@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 26rem;
+  height: 28rem;
   width: 22rem;
   box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
   background-color: #f2f5ef;
@@ -40,15 +40,42 @@
   box-sizing: border-box;
 }
 
+.checkout__btns {
+  width: 100%;
+}
+
 .pay__btn {
   width: 100%;
   box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
-  background-color: #abd1ad;
+  background-color: #486580;
+  color: #fff;
   border-radius: 0.1rem;
   padding: 1rem 0 1rem 0;
   text-align: center;
   cursor: pointer;
   font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pay__btn:hover {
+  background-color: #011b33;
+}
+
+.rave__checkout__btn {
+  width: 100%;
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 0.1rem;
+  padding: 1rem 0 1rem 0;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #576ae6;
+}
+
+.rave__checkout__btn:hover {
+  background-color: #2038d6;
 }
 
 .App-logo {

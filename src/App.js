@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
   state = {
     email: '',
     phoneNumber: '',
@@ -41,6 +42,38 @@ class App extends Component {
     });
 
     handler.openIframe();
+  }
+
+  handleRaveCheckout = (event) => {
+    event.preventDefault();
+
+    window.getpaidSetup({
+      PBFPubKey: process.env.REACT_APP_RAVE_KEY,
+      customer_email: 'user@example.com',
+      customer_firstname: 'Temi',
+      customer_lastname: 'Adelewa',
+      custom_description: 'Pay Internet',
+      // custom_logo: 'http://localhost/communique-3/skin/frontend/ultimo/communique/custom/images/logo.svg',
+      custom_title: 'Communique Global System',
+      amount: 2000,
+      customer_phone: '234099940409',
+      country: 'NG',
+      currency: 'NGN',
+      txref: 'rave-123456',
+      // integrity_hash: "6800d2dcbb7a91f5f9556e1b5820096d3d74ed4560343fc89b03a42701da4f30",
+      onclose: () => {},
+      callback: (response) => {
+        console.log("This is the response returned after a charge", response);
+        if (
+          response.tx.chargeResponseCode === "00" ||
+          response.tx.chargeResponseCode === "0"
+        ) {
+          // redirect to a success page
+        } else {
+          // redirect to a failure page.
+        }
+      }
+    });
   }
 
   render() {
@@ -83,9 +116,14 @@ class App extends Component {
               required
             />
           </div>
-          <button className="pay__btn">
-            Checkout With Paystack
-          </button>
+          <div className="checkout__btns">
+            <button name="payStack" className="pay__btn">
+              Checkout With Paystack
+            </button>
+            <button name="rave" className="rave__checkout__btn" onClick={this.handleRaveCheckout}>
+              Checkout With Rave
+            </button>
+          </div>
         </form>
       </div>
     );
